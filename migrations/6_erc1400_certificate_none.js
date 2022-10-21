@@ -2,7 +2,7 @@ const ERC1400HoldableCertificateToken = artifacts.require(
   './ERC1400HoldableCertificateToken.sol'
 );
 
-const CERTIFICATE_SIGNER = '0xfe3b557e8fb62b89f4916b721be55ceb828dbd73';
+const CERTIFICATE_SIGNER = '0x627306090abaB3A6e1400e9345bC60c78a8BEf57';
 const controller = '0xca843569e3427144cead5e4d5999a3d0ccf92b8e';
 
 const partition1 =

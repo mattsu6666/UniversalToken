@@ -20,7 +20,7 @@ const ZERO_BYTES32 =
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 const ZERO_BYTE = '0x';
 
-const CERTIFICATE_SIGNER = '0xfe3b557e8fb62b89f4916b721be55ceb828dbd73';
+const CERTIFICATE_SIGNER = '0x627306090abaB3A6e1400e9345bC60c78a8BEf57';
 
 const partitionFlag =
   '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'; // Flag to indicate a partition change

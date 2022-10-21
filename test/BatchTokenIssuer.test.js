@@ -9,7 +9,7 @@ const ERC1400HoldableCertificate = artifacts.require(
 );
 const ERC1400TokensValidator = artifacts.require('ERC1400TokensValidator');
 
-const CERTIFICATE_SIGNER = '0xfe3b557e8fb62b89f4916b721be55ceb828dbd73';
+const CERTIFICATE_SIGNER = '0x627306090abaB3A6e1400e9345bC60c78a8BEf57';
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 
