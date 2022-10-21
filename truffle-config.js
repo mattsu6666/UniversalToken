@@ -7,10 +7,11 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const providerWithMnemonic = (mnemonic, rpcEndpoint) => () =>
   new HDWalletProvider(mnemonic, rpcEndpoint);
 
-const infuraProvider = network => providerWithMnemonic(
-  process.env.MNEMONIC || '',
-  `https://${network}.infura.io/v3/${process.env.INFURA_API_KEY}`
-);
+const infuraProvider = (network) =>
+  providerWithMnemonic(
+    process.env.MNEMONIC || '',
+    `https://${network}.infura.io/v3/${process.env.INFURA_API_KEY}`
+  );
 
 const ropstenProvider = process.env.SOLIDITY_COVERAGE
   ? undefined
@@ -19,15 +20,20 @@ const ropstenProvider = process.env.SOLIDITY_COVERAGE
 module.exports = {
   networks: {
     development: {
+      provider: () =>
+        new HDWalletProvider(process.env.PRIVATE_KEY, 'http://localhost:8545'),
+      network_id: '*', // eslint-disable-line camelcase
+    },
+    // development: {
+    //   host: 'localhost',
+    //   port: 7545,
+    //   network_id: '*', // eslint-disable-line camelcase
+    //   gasPrice: 0x01,
+    // },
+    test: {
       host: 'localhost',
       port: 7545,
-      network_id: '*', // eslint-disable-line camelcase
-      gasPrice: 0x01,
-    },
-    test: {
-      host: "localhost",
-      port: 7545,
-      network_id: "*",
+      network_id: '*',
       gasPrice: 0x01,
     },
     ropsten: {
@@ -56,7 +62,11 @@ module.exports = {
       network_id: parseInt(process.env.NETWORK_ID) || '*', // eslint-disable-line camelcase
     },
   },
-  plugins: ["solidity-coverage", "truffle-contract-size", "truffle-plugin-verify"],
+  plugins: [
+    'solidity-coverage',
+    'truffle-contract-size',
+    'truffle-plugin-verify',
+  ],
   compilers: {
     solc: {
       version: '0.8.7',
@@ -69,6 +79,6 @@ module.exports = {
     },
   },
   api_keys: {
-    etherscan: process.env.ETHERSCAN_API_KEY
+    etherscan: process.env.ETHERSCAN_API_KEY,
   },
 };

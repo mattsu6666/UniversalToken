@@ -53,3 +53,19 @@ test-lint:
 
 lint:
 	@yarn run lint:all:fix
+
+#------------------------------------------------------------------------------
+# deploy
+#------------------------------------------------------------------------------
+# MacOS specific
+.PHONY: setup
+setup:
+	./scripts/setup.sh
+
+.PHONY: deploy
+deploy:
+	yarn truffle migrate --network development
+
+.PHONY: redeploy
+redeploy:
+	yarn truffle migrate --network development --reset

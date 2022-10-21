@@ -1,4 +1,4 @@
-const { soliditySha3 } = require("web3-utils");
+const { soliditySha3 } = require('web3-utils');
 
 const BatchBalanceReader = artifacts.require('./BatchBalanceReader.sol'); // deprecated
 const BatchReader = artifacts.require('./BatchReader.sol');
@@ -9,32 +9,62 @@ const BALANCE_READER = 'BatchBalanceReader';
 const READER = 'BatchReader';
 
 module.exports = async function (deployer, network, accounts) {
-  if (network == "test") return; // test maintains own contracts
-  
+  if (network == 'test') return; // test maintains own contracts
+
   await deployer.deploy(BatchReader);
-  console.log('\n   > Batch Reader deployment: Success -->', BatchReader.address);
+  console.log(
+    '\n   > Batch Reader deployment: Success -->',
+    BatchReader.address
+  );
 
-  const registry = await ERC1820Registry.at('0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24');
+  const registry = await ERC1820Registry.at(
+    '0x182085C0842e892308C04785C074E6a2D5aB0a84'
+  );
 
-  await registry.setInterfaceImplementer(accounts[0], soliditySha3(READER), BatchReader.address, { from: accounts[0] });
+  await registry.setInterfaceImplementer(
+    accounts[0],
+    soliditySha3(READER),
+    BatchReader.address,
+    { from: accounts[0] }
+  );
 
-  const registeredBatchReaderAddress = await registry.getInterfaceImplementer(accounts[0], soliditySha3(READER));
+  const registeredBatchReaderAddress = await registry.getInterfaceImplementer(
+    accounts[0],
+    soliditySha3(READER)
+  );
 
-  if(registeredBatchReaderAddress === BatchReader.address) {
-    console.log('\n   > Batch Reader registry in ERC1820: Success -->', registeredBatchReaderAddress);
+  if (registeredBatchReaderAddress === BatchReader.address) {
+    console.log(
+      '\n   > Batch Reader registry in ERC1820: Success -->',
+      registeredBatchReaderAddress
+    );
   }
 
   // Deprecated
   await deployer.deploy(BatchBalanceReader);
-  console.log('\n   > Batch Balance Reader deployment: Success -->', BatchBalanceReader.address);
+  console.log(
+    '\n   > Batch Balance Reader deployment: Success -->',
+    BatchBalanceReader.address
+  );
 
-  await registry.setInterfaceImplementer(accounts[0], soliditySha3(BALANCE_READER), BatchBalanceReader.address, { from: accounts[0] });
+  await registry.setInterfaceImplementer(
+    accounts[0],
+    soliditySha3(BALANCE_READER),
+    BatchBalanceReader.address,
+    { from: accounts[0] }
+  );
 
-  const registeredBatchBalanceReaderAddress = await registry.getInterfaceImplementer(accounts[0], soliditySha3(BALANCE_READER));
+  const registeredBatchBalanceReaderAddress =
+    await registry.getInterfaceImplementer(
+      accounts[0],
+      soliditySha3(BALANCE_READER)
+    );
 
-  if(registeredBatchBalanceReaderAddress === BatchBalanceReader.address) {
-    console.log('\n   > BatchBalance Reader registry in ERC1820: Success -->', registeredBatchBalanceReaderAddress);
+  if (registeredBatchBalanceReaderAddress === BatchBalanceReader.address) {
+    console.log(
+      '\n   > BatchBalance Reader registry in ERC1820: Success -->',
+      registeredBatchBalanceReaderAddress
+    );
   }
   //
-  
 };

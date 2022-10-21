@@ -6,7 +6,8 @@ import "@openzeppelin/contracts/utils/introspection/IERC1820Registry.sol";
 
 /// Base client to interact with the registry.
 contract ERC1820Client {
-    IERC1820Registry constant ERC1820REGISTRY = IERC1820Registry(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24);
+    //IERC1820Registry constant ERC1820REGISTRY = IERC1820Registry(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24);
+    IERC1820Registry constant ERC1820REGISTRY = IERC1820Registry(0x182085C0842e892308C04785C074E6a2D5aB0a84);
 
     function setInterfaceImplementation(string memory _interfaceLabel, address _implementation) internal {
         bytes32 interfaceHash = keccak256(abi.encodePacked(_interfaceLabel));

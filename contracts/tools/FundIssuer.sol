@@ -985,7 +985,7 @@ contract FundIssuer is ERC1820Client, IERC1400TokensRecipient, ERC1820Implemente
    *
    * The next 32 bytes contain the order index.
    *
-   * Example input for asset address '0xb5747835141b46f7C472393B31F8F5A57F74A44f',
+   * Example input for asset address '0xca843569e3427144cead5e4d5999a3d0ccf92b8e',
    * asset class '37252', order type 'Value', and value 12000
    * 0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc000000000000000000000000b5747835141b46f7C472393B31F8F5A57F74A44f
    * 000000000000000000000000000000000000000000000000000000000037252000000000000000000000000000000000000000000000000000000000000001

@@ -973,7 +973,7 @@ contract Swaps is Ownable, ERC1820Client, IERC1400TokensRecipient, ERC1820Implem
    * The next 32 bytes contain a boolean precising wether trade has been accepted by token holder or not.
    * The next 32 bytes contain a boolean precising wether trade has been approved by token controller or not.
    *
-   * Example input for recipient address '0xb5747835141b46f7C472393B31F8F5A57F74A44f', expiration date '1576348418',
+   * Example input for recipient address '0xca843569e3427144cead5e4d5999a3d0ccf92b8e', expiration date '1576348418',
    * trade executer address '0x32F54098916ceb5f57a117dA9554175Fe25611bA', requested token address '0xC6F0410A667a5BEA528d6bc9efBe10270089Bb11',
    * requested token amount '5', requested token id/partition '37252', and requested token type 'ERC1400', accepted and approved:
    * 0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc000000000000000000000000b5747835141b46f7C472393B31F8F5A57F74A44f
