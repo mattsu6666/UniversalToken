@@ -26,7 +26,7 @@
     "start:chain": "ganache-cli -p 7545",
     "test": "yarn truffle test",
     "generate-types": "typechain --target=ethers-v5 'build/contracts/*.json'",
-    "postinstall": "truffle compile && yarn generate-types"
+    "postinstall": "truffle compile"
   },
   "repository": {
     "type": "git",
