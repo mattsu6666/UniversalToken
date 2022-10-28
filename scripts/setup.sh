@@ -1,8 +1,16 @@
-#!/bin/sh
+#!/bin/bash
+
+VERSION=$(node -v | cut -d'.' -f1)
+if [[ "$VERSION" = v12 ]]; then
+  echo 'node is already isntalled'
+  yarn
+  yarn env
+  exit 0
+fi
 
 OS="`uname`"
 
-if [[ "$OS" =~ ^darwin ]]; then
+if [[ "$OS" =~ ^Darwin ]]; then
   which yarn >/dev/null 2>&1
   if [ $? -ne 0 ]; then
     brew install yarn
@@ -12,7 +20,7 @@ if [[ "$OS" =~ ^darwin ]]; then
   if [ $? -ne 0 ]; then
     brew install nvm
   fi
-elif [[ "$OS" =~ ^linux ]]; then
+elif [[ "$OS" =~ ^Linux ]]; then
   which yarn >/dev/null 2>&1
   if [ $? -ne 0 ]; then
     npm install --global yarn
