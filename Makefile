@@ -57,14 +57,15 @@ lint:
 #------------------------------------------------------------------------------
 # deploy
 #------------------------------------------------------------------------------
-.PHONY: yarn-ci
-yarn-ci:
-	yarn install --frozen-lockfile
-
-# MacOS specific
 .PHONY: setup
 setup:
-	./scripts/setup.sh
+	yarn
+	yarn env
+
+.PHONY: setup-ci
+setup-ci:
+	yarn install --frozen-lockfile
+	yarn env
 
 .PHONY: deploy
 deploy:
